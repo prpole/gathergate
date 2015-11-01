@@ -14,7 +14,7 @@ with open('oct_tweets.p','r') as f:
     tweet_list = pickle.load(f)
 '''
 with open('latest_tweet.txt','r') as f:
-    status_start = pickle.load(f) 
+    status_start = 0 #pickle.load(f) 
 
 tweet_list = []
 

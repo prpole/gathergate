@@ -13,8 +13,8 @@ api = tweepy.API(auth,wait_on_rate_limit=True)
 with open('oct_tweets.p','r') as f:
     tweet_list = pickle.load(f)
 '''
-with open('latest_tweet.txt','r') as f:
-    start = 0 #pickle.load(f)[0]
+#with open('latest_tweet.txt','r') as f:
+start = 0 #pickle.load(f)[0]
 
 tweet_list = []
 
@@ -24,19 +24,14 @@ with open('tweet_ids.p','r') as f:
 
 # while start < 316569:
 
-while start < 200:
-    try:    
-        new_ids = tweet_ids[start+1:start+101]
+new_ids = tweet_ids[start+1:start+101]
 
-        result = api.statuses_lookup(new_ids)
-        print result
-        print start
-        tweet_list.append(result)
-        start += 100
-        pickle.dump([start],open('latest_tweet.txt','w'))
-	pickle.dump(tweet_list,open('oct_tweets.p','w')) 
-    except Exception,e:
-        print e
-        break
+result = api.statuses_lookup(new_ids)
+print result
+print start
+tweet_list.append(result)
+start += 100
+pickle.dump([start],open('test_latest_tweet.txt','w'))
+pickle.dump(tweet_list,open('test_oct_tweets.p','w')) 
 
 
